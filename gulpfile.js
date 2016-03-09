@@ -3,6 +3,13 @@ var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var sass = require('gulp-sass');
 var karmaServer = require('karma').Server;
+var del = require('del');
+
+gulp.task('clean', function () {
+  return del([
+    'webapp/dist'
+  ]);
+});
 
 var paths = {
   html: './webapp/src/**/*.html',
