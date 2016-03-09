@@ -44,7 +44,7 @@ gulp.task('watch', ['default'], function(){
 gulp.task('test', ['default'], function(){
   new karmaServer({
     configFile: __dirname + '/karma.conf.js',
-    singleRun: true
+    singleRun: false
   }).start();
 });
 
