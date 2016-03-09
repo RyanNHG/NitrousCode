@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var sass = require('gulp-sass');
+var karmaServer = require('karma').Server;
 
 var paths = {
   html: './webapp/src/**/*.html',
@@ -31,6 +32,13 @@ gulp.task('watch', ['default'], function(){
   gulp.watch(paths.html,['copy-html']);
   gulp.watch(paths.js,['bundle-js']);
   gulp.watch(paths.sass,['bundle-css']);
+});
+
+gulp.task('test', ['default'], function(){
+  new karmaServer({
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: true
+  }).start();
 });
 
 gulp.task('default', ['copy-html', 'bundle-js', 'bundle-css']);
